@@ -1,0 +1,531 @@
+:root {
+    --bg-dark: #0D0E10;
+    --bg-card: #15171C;
+    --bg-console: #08090B;
+    --text-linen: #FAF6F0;
+    --text-muted: #838894;
+    --copper-warm: #D48C46;
+    --ceb-yellow: #FFC72C;
+    --cebg-blue: #003366;
+    --border-dark: rgba(212, 140, 70, 0.22);
+    
+    --font-serif: 'Playfair Display', serif;
+    --font-mono: 'Space Mono', monospace;
+    --font-script: 'Alex Brush', cursive;
+    
+    --curve-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden !important;
+}
+
+body.ticket-passport-body {
+    background-color: var(--bg-dark);
+    color: var(--text-linen);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.max-width-800 { max-width: 800px; }
+.max-width-600 { max-width: 600px; }
+.font-serif { font-family: var(--font-serif); }
+.font-mono { font-family: var(--font-mono); }
+.italic { font-style: italic; }
+.text-copper { color: var(--copper-warm); }
+
+.section-passport-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--ceb-yellow);
+    font-weight: 700;
+}
+
+.display-passport-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    color: var(--text-linen);
+}
+
+.floating-hud-controls {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+}
+
+.hud-ticket-btn {
+    padding: 12px 24px;
+    border-radius: 4px;
+    background: var(--ceb-yellow);
+    color: #000 !important;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s var(--curve-smooth);
+}
+
+.hud-ticket-btn:hover {
+    transform: translateY(-2px);
+}
+
+#petalCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 9;
+}
+
+.ticket-hero-section {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+}
+
+/* AUTHENTIC CEBU PACIFIC INSPIRED BOARDING PASS STYLE */
+.ceb-boarding-pass {
+    background: var(--bg-card);
+    border: 2px solid var(--ceb-yellow);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 650px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+.ceb-pass-header {
+    background: var(--ceb-yellow);
+    color: #000;
+}
+
+.ceb-logo-text {
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    display: block;
+    color: #000;
+}
+
+.ceb-logo-sub {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    opacity: 0.8;
+}
+
+.ceb-pass-badge {
+    background: #000;
+    color: var(--ceb-yellow);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.ceb-route-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+}
+
+.ceb-route-cities {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-linen);
+}
+
+.ceb-couple-heading {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--ceb-yellow);
+}
+
+.script-amp {
+    font-family: var(--font-script);
+    color: var(--text-linen);
+}
+
+.ceb-date-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    display: block;
+}
+
+.ceb-date-val {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--text-linen);
+}
+
+.ceb-meta-grid {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 12px 0;
+}
+
+.ceb-meta-grid .meta-title {
+    display: block;
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+}
+
+.ceb-meta-grid .meta-data {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-linen);
+}
+
+.btn-ceb-action {
+    background: var(--ceb-yellow);
+    color: #000;
+    border: none;
+    padding: 14px 32px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    border-radius: 6px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-ceb-action:hover {
+    opacity: 0.95;
+    transform: translateY(-2px);
+}
+
+.ceb-pass-footer {
+    background: #101216;
+    border-top: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.ceb-barcode-bars {
+    height: 30px;
+    width: 180px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--text-linen) 0px,
+        var(--text-linen) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+}
+
+.ceb-barcode-text {
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-top: 2px;
+}
+
+.ceb-status-valid {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #4BB543;
+    letter-spacing: 0.15em;
+}
+
+.main-content-hidden {
+    display: none;
+    opacity: 0;
+}
+
+.cyber-terminal-card, .telemetry-card, .circuit-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    border-radius: 6px;
+}
+
+.terminal-code {
+    font-size: 0.65rem;
+    color: var(--ceb-yellow);
+}
+
+.terminal-status {
+    font-size: 0.65rem;
+    color: #4BB543;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4BB543;
+}
+
+.console-box {
+    background: var(--bg-console);
+    border-left: 3px solid var(--ceb-yellow);
+    border-radius: 2px;
+    font-size: 0.75rem;
+}
+
+.console-box .prompt {
+    color: var(--ceb-yellow);
+    font-weight: bold;
+}
+
+.tag-spec, .wpt-code {
+    font-size: 0.7rem;
+    color: var(--ceb-yellow);
+    font-weight: 700;
+}
+
+.icon-tag {
+    color: var(--ceb-yellow);
+}
+
+.telemetry-portrait-box {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+}
+
+.telemetry-portrait-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portrait-stamp {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(13, 14, 16, 0.85);
+    color: var(--ceb-yellow);
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    border: 1px solid var(--border-dark);
+}
+
+.telemetry-name {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 2px;
+}
+
+.telemetry-role {
+    font-size: 0.65rem;
+    color: var(--ceb-yellow);
+    letter-spacing: 0.15em;
+}
+
+.spec-metrics {
+    border-top: 1px solid var(--border-dark);
+    padding-top: 12px;
+}
+
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    margin-bottom: 6px;
+}
+
+.metric-row span {
+    color: var(--text-muted);
+}
+
+.coord-tag {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+}
+
+.btn-circuit-nav {
+    display: inline-block;
+    border: 1px solid var(--ceb-yellow);
+    color: var(--text-linen);
+    padding: 10px 20px;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-circuit-nav:hover {
+    background: var(--ceb-yellow);
+    color: #000;
+}
+
+.palette-chip {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border-dark);
+}
+
+.departures-board {
+    background: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    border-radius: 6px;
+}
+
+.board-header {
+    background: var(--bg-console);
+    border-bottom: 1px solid var(--border-dark);
+    font-size: 0.7rem;
+    color: var(--ceb-yellow);
+}
+
+.board-row {
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.board-row:last-child {
+    border-bottom: none;
+}
+
+.dep-time {
+    font-size: 0.9rem;
+    color: var(--ceb-yellow);
+    font-weight: 700;
+}
+
+.dep-status {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+    border-radius: 20px;
+}
+
+.status-on-time {
+    background: rgba(255, 199, 44, 0.15);
+    color: var(--ceb-yellow);
+    border: 1px solid var(--ceb-yellow);
+}
+
+.status-scheduled {
+    background: rgba(131, 136, 148, 0.15);
+    color: var(--text-muted);
+    border: 1px solid var(--text-muted);
+}
+
+.vault-frame {
+    height: 280px;
+    overflow: hidden;
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+}
+
+.vault-frame img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s var(--curve-smooth);
+}
+
+.vault-frame:hover img {
+    transform: scale(1.05);
+}
+
+.cyber-input {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-dark);
+    color: var(--text-linen);
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.cyber-input:focus {
+    background: var(--bg-dark);
+    border-color: var(--ceb-yellow);
+    color: var(--text-linen);
+    box-shadow: none;
+}
+
+.btn-cyber-submit {
+    background: var(--ceb-yellow);
+    color: #000;
+    border: none;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    border-radius: 4px;
+    transition: opacity 0.2s ease;
+}
+
+.btn-cyber-submit:hover { opacity: 0.9; }
+
+.footer-cyber {
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border-dark);
+}
+
+.footer-code {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--ceb-yellow);
+}
+
+@media (max-width: 768px) {
+    .ceb-boarding-pass { max-width: 100%; }
+}
+
+.preloader-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: #0D0E10;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s;
+}
+
+.preloader-ticket-box {
+    background: #15171C;
+    border: 1px solid rgba(255, 199, 44, 0.25);
+    padding: 30px;
+    border-radius: 6px;
+    max-width: 320px;
+    width: 90%;
+}
+
+.ticket-stub-no {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--ceb-yellow);
+}
+
+.ticket-preloader-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #FAF6F0;
+}
+
+.barcode-line {
+    height: 24px;
+    background: repeating-linear-gradient(
+        90deg,
+        #FAF6F0 0px,
+        #FAF6F0 2px,
+        transparent 2px,
+        transparent 4px
+    );
+}
+
+.ticket-status-text {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: #838894;
+    margin: 0;
+}

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evelyn & Julian — Flight & Road Passport</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="ticket-passport-body">
+
+    <div id="appPreloader" class="preloader-overlay">
+        <div class="preloader-ticket-box text-center">
+            <span class="ticket-stub-no">SYSTEM // INVITATION VERIFICATION</span>
+            <h2 class="ticket-preloader-title mt-2">EVELYN & JULIAN</h2>
+            <div class="barcode-line my-3"></div>
+            <p class="ticket-status-text">INITIALIZING BOARDING MANIFEST...</p>
+        </div>
+    </div>
+
+    <!-- <div class="floating-hud-controls">
+        <a href="#rsvp" class="hud-ticket-btn text-decoration-none">
+            <i class="fas fa-stamp me-2"></i> STAMP RSVP BOARDING
+        </a>
+    </div> -->
+
+    <canvas id="petalCanvas"></canvas>
+
+    <section id="hero" class="ticket-hero-section py-5">
+        <div class="container py-4">
+            <!-- CEBU PACIFIC INSPIRED BOARDING PASS -->
+            <div class="ceb-boarding-pass shadow-lg mx-auto" data-aos="zoom-in">
+                
+                <div class="ceb-pass-header p-3 px-4 d-flex justify-content-between align-items-center">
+                    <div class="ceb-brand-logo">
+                        <span class="ceb-logo-text">CEB WEDDING</span>
+                        <span class="ceb-logo-sub">FLIGHT 1024</span>
+                    </div>
+                    <div class="ceb-pass-badge">
+                        <span>VIP BOARDING PASS</span>
+                    </div>
+                </div>
+
+                <div class="ceb-pass-body p-4 p-md-5">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <span class="ceb-route-label">ROUTE FLIGHT</span>
+                            <h2 class="ceb-route-cities my-1">MNL <i class="fas fa-plane mx-2 text-warning"></i> ANTIPOLO</h2>
+                            <p class="ceb-couple-heading mb-0">EVELYN <span class="script-amp">&amp;</span> JULIAN</p>
+                        </div>
+                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                            <span class="ceb-date-label">DATE OF FLIGHT</span>
+                            <h4 class="ceb-date-val mb-0">24 OCT 2026</h4>
+                        </div>
+                    </div>
+
+                    <div class="ceb-meta-grid row text-center g-3 my-4">
+                        <div class="col-3 border-end">
+                            <span class="meta-title">DEPARTURE</span>
+                            <span class="meta-data">03:30 PM</span>
+                        </div>
+                        <div class="col-3 border-end">
+                            <span class="meta-title">GATE</span>
+                            <span class="meta-data">PINTO ART</span>
+                        </div>
+                        <div class="col-3 border-end">
+                            <span class="meta-title">SEAT</span>
+                            <span class="meta-data">1A // VIP</span>
+                        </div>
+                        <div class="col-3">
+                            <span class="meta-title">ZONE</span>
+                            <span class="meta-data">PRIORITY</span>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button id="openInvitationBtn" class="btn-ceb-action">
+                            <i class="fas fa-ticket-alt me-2"></i> OPEN BOARDING MANIFEST
+                        </button>
+                    </div>
+                </div>
+
+                <div class="ceb-pass-footer p-3 px-4 d-flex justify-content-between align-items-center">
+                    <div class="ceb-barcode-area">
+                        <div class="ceb-barcode-bars"></div>
+                        <span class="ceb-barcode-text">CEB10242026-WEDDING-MANIFEST</span>
+                    </div>
+                    <span class="ceb-status-valid">STATUS: CONFIRMED</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="mainContent" class="main-content-hidden">
+
+        <section id="welcome" class="py-5">
+            <div class="container py-4">
+                <div class="cyber-terminal-card p-4 p-md-5 mx-auto max-width-800" data-aos="fade-up">
+                    <div class="terminal-bar d-flex justify-content-between align-items-center mb-4">
+                        <span class="terminal-code">// MANIFEST LOG: 1024-WELCOME</span>
+                        <span class="terminal-status"><span class="status-dot"></span> SECURE PASSENGER VERIFIED</span>
+                    </div>
+                    
+                    <div class="terminal-body">
+                        <span class="terminal-label">PASSENGER ASSIGNMENT</span>
+                        <!-- DYNAMIC GUEST NAME INJECTION TARGET -->
+                        <h2 id="guestGreeting" class="manifest-guest-title mt-1 mb-4 text-warning">Honored Guest</h2>
+                        
+                        <div class="console-box p-3 mb-4">
+                            <p class="console-line mb-1"><span class="prompt">&gt;</span> RECIPE_SPEC: 50% Sugar, 50% Structure, 100% Precision.</p>
+                            <p class="console-line mb-0"><span class="prompt">&gt;</span> ROUTE_TELEMETRY: 2 Wheels, High Elevation, Full Throttle Ahead.</p>
+                        </div>
+
+                        <p class="manifest-lead italic font-serif text-light">
+                            "Where delicate buttercream piping meets winding mountain roads. We invite you to be part of the official manifest as we initialize our greatest journey together."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="couple" class="py-5">
+            <div class="container py-4">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <span class="section-passport-label">// DOSSIER TELEMETRY</span>
+                    <h2 class="display-passport-title mt-1">Protagonist Specs</h2>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+                    
+                    <div class="col-lg-5 col-md-6" data-aos="fade-right">
+                        <div class="telemetry-card p-4 p-md-5 h-100">
+                            <div class="card-header-bar d-flex justify-content-between align-items-center mb-4">
+                                <span class="tag-spec">SPEC 01 // ARTISAN</span>
+                                <span class="icon-tag"><i class="fas fa-cake-candles"></i></span>
+                            </div>
+
+                            <div class="telemetry-portrait-box mb-4">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Evelyn Cruz">
+                                <span class="portrait-stamp">CAKE SCULPTOR</span>
+                            </div>
+
+                            <h3 class="telemetry-name text-light">Evelyn Cruz</h3>
+                            <span class="telemetry-role">THE BRIDE • ARCHITECT</span>
+
+                            <div class="spec-metrics mt-4">
+                                <div class="metric-row">
+                                    <span>PRIMARY CRAFT</span>
+                                    <strong class="text-light">Botanical Cake Architecture</strong>
+                                </div>
+                                <div class="metric-row">
+                                    <span>KEY TOOLKIT</span>
+                                    <strong class="text-light">Piping Tip #104 &amp; Palette Knives</strong>
+                                </div>
+                                <div class="metric-row">
+                                    <span>SIGNATURE FUEL</span>
+                                    <strong class="text-light">Truffle Pasta &amp; Espresso</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-md-6" data-aos="fade-left">
+                        <div class="telemetry-card p-4 p-md-5 h-100">
+                            <div class="card-header-bar d-flex justify-content-between align-items-center mb-4">
+                                <span class="tag-spec">SPEC 02 // RIDER</span>
+                                <span class="icon-tag"><i class="fas fa-motorcycle"></i></span>
+                            </div>
+
+                            <div class="telemetry-portrait-box mb-4">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Julian Tirado">
+                                <span class="portrait-stamp">OVERLAND RIDER</span>
+                            </div>
+
+                            <h3 class="telemetry-name text-light">Julian Tirado</h3>
+                            <span class="telemetry-role">THE GROOM • DEVOPS ENGINEER</span>
+
+                            <div class="spec-metrics mt-4">
+                                <div class="metric-row">
+                                    <span>PRIMARY CRAFT</span>
+                                    <strong class="text-light">Overland Telemetry &amp; Infrastructure</strong>
+                                </div>
+                                <div class="metric-row">
+                                    <span>KEY TOOLKIT</span>
+                                    <strong class="text-light">Torque Wrench &amp; Terminal Shell</strong>
+                                </div>
+                                <div class="metric-row">
+                                    <span>SIGNATURE FUEL</span>
+                                    <strong class="text-light">Wagyu Ribeye &amp; Black Coffee</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="details" class="py-5">
+            <div class="container py-4">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <span class="section-passport-label">// GPS COORDINATES</span>
+                    <h2 class="display-passport-title mt-1">Waypoint Circuit</h2>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-5 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="circuit-card p-4 p-md-5 h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="circuit-header d-flex justify-content-between align-items-center mb-3">
+                                    <span class="wpt-code">WPT-01 // CEREMONY</span>
+                                    <span class="coord-tag">14.5878° N, 121.1764° E</span>
+                                </div>
+                                <h3 class="circuit-title mt-2 text-light">Pinto Art Sanctuary Chapel</h3>
+                                <p class="circuit-time mt-2 text-warning"><i class="far fa-clock me-1"></i> 3:30 PM • OCTOBER 24, 2026</p>
+                                <p class="text-light small mt-3 opacity-75">1 Sierra Madre St, Grand Heights Subd, Antipolo, Rizal</p>
+                            </div>
+                            <a href="https://maps.google.com" target="_blank" class="btn-circuit-nav mt-4">
+                                <i class="fas fa-crosshairs me-2"></i> INITIALIZE GPS MAP
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="circuit-card p-4 p-md-5 h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="circuit-header d-flex justify-content-between align-items-center mb-3">
+                                    <span class="wpt-code">WPT-02 // RECEPTION</span>
+                                    <span class="coord-tag">14.5891° N, 121.1782° E</span>
+                                </div>
+                                <h3 class="circuit-title mt-2 text-light">The Upper Garden Pavilion</h3>
+                                <p class="circuit-time mt-2 text-warning"><i class="far fa-clock me-1"></i> 6:00 PM • OCTOBER 24, 2026</p>
+                                <p class="text-light small mt-3 opacity-75">Cocktails, dinner banquet, and night festivities to follow immediately.</p>
+                            </div>
+                            <a href="https://maps.google.com" target="_blank" class="btn-circuit-nav mt-4">
+                                <i class="fas fa-crosshairs me-2"></i> INITIALIZE GPS MAP
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mt-5" data-aos="fade-up">
+                    <div class="col-lg-10">
+                        <div class="circuit-card p-4 p-md-5 text-center">
+                            <span class="section-passport-label">// DRESS MATRIX</span>
+                            <h3 class="mt-2 text-light">Formal / Modern Barong &amp; Filipiniana</h3>
+                            <p class="text-light small mt-3 opacity-75 mx-auto max-width-600">
+                                Guests are requested to dress in formal attire following our palette specs. Please refrain from wearing solid white or casual denim.
+                            </p>
+                            <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+                                <div class="palette-chip" style="background-color: #121212;" title="Charcoal"></div>
+                                <div class="palette-chip" style="background-color: #D48C46;" title="Warm Copper"></div>
+                                <div class="palette-chip" style="background-color: #5A6351;" title="Earthy Olive"></div>
+                                <div class="palette-chip" style="background-color: #DCAE96;" title="Blush Soft"></div>
+                                <div class="palette-chip" style="background-color: #FAF6F0;" title="Linen Cream"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="program" class="py-5">
+            <div class="container py-4">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <span class="section-passport-label">// DEPARTURES BOARD</span>
+                    <h2 class="display-passport-title mt-1">Flight &amp; Program Manifest</h2>
+                </div>
+
+                <div class="departures-board max-width-800 mx-auto" data-aos="fade-up">
+                    <div class="board-header p-3 d-flex justify-content-between">
+                        <span>TIME</span>
+                        <span>EVENT / GATE</span>
+                        <span>STATUS</span>
+                    </div>
+
+                    <div class="board-row p-3 d-flex justify-content-between align-items-center">
+                        <span class="dep-time">03:30 PM</span>
+                        <div class="dep-event">
+                            <strong class="text-light">Holy Matrimony Ceremony</strong>
+                            <span class="d-block small text-light opacity-75">Sanctuary Chapel</span>
+                        </div>
+                        <span class="dep-status status-on-time">BOARDING</span>
+                    </div>
+
+                    <div class="board-row p-3 d-flex justify-content-between align-items-center">
+                        <span class="dep-time">05:30 PM</span>
+                        <div class="dep-event">
+                            <strong class="text-light">Sunset Cocktails &amp; Refreshments</strong>
+                            <span class="d-block small text-light opacity-75">Garden Courtyard</span>
+                        </div>
+                        <span class="dep-status status-scheduled">SCHEDULED</span>
+                    </div>
+
+                    <div class="board-row p-3 d-flex justify-content-between align-items-center">
+                        <span class="dep-time">06:30 PM</span>
+                        <div class="dep-event">
+                            <strong class="text-light">Grand Entrance &amp; Dinner Banquet</strong>
+                            <span class="d-block small text-light opacity-75">Upper Pavilion</span>
+                        </div>
+                        <span class="dep-status status-scheduled">SCHEDULED</span>
+                    </div>
+
+                    <div class="board-row p-3 d-flex justify-content-between align-items-center">
+                        <span class="dep-time">08:30 PM</span>
+                        <div class="dep-event">
+                            <strong class="text-light">DJ Performance &amp; Afterparty</strong>
+                            <span class="d-block small text-light opacity-75">Main Stage</span>
+                        </div>
+                        <span class="dep-status status-scheduled">SCHEDULED</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="py-5">
+            <div class="container py-4">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <span class="section-passport-label">// VISUAL ARCHIVE</span>
+                    <h2 class="display-passport-title mt-1">Photo Vault</h2>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="vault-frame">
+                            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Gallery Photo 1" class="img-fluid w-100">
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="vault-frame">
+                            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80" alt="Gallery Photo 2" class="img-fluid w-100">
+                        </div>
+                    </div>
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="vault-frame">
+                            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80" alt="Gallery Photo 3" class="img-fluid w-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="rsvp" class="py-5">
+            <div class="container py-4">
+                <div class="cyber-terminal-card p-4 p-md-5 mx-auto max-width-600" data-aos="zoom-in">
+                    <div class="text-center mb-4">
+                        <span class="section-passport-label">// CONFIRMATION ENGINE</span>
+                        <h2 class="display-passport-title mt-1">RSVP Boarding Form</h2>
+                        <p class="small text-light opacity-75 mt-2">Please submit your response before September 15, 2026.</p>
+                    </div>
+
+                    <form id="rsvpForm">
+                        <div class="mb-3">
+                            <label for="rsvpName" class="form-label font-mono text-light">FULL NAME</label>
+                            <input type="text" class="form-control cyber-input" id="rsvpName" required placeholder="e.g. Maria Santos">
+                        </div>
+                        <div class="mb-3">
+                            <label for="rsvpAttendance" class="form-label font-mono text-light">ATTENDANCE</label>
+                            <select class="form-select cyber-input" id="rsvpAttendance" required>
+                                <option value="" disabled selected>Will you be attending?</option>
+                                <option value="attending">Joyfully Accepts (YES)</option>
+                                <option value="declined">Regretfully Declines (NO)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="rsvpCount" class="form-label font-mono text-light">PASSENGER COUNT</label>
+                            <input type="number" class="form-control cyber-input" id="rsvpCount" min="1" max="5" value="1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="rsvpDiet" class="form-label font-mono text-light">DIETARY REQUIREMENTS</label>
+                            <input type="text" class="form-control cyber-input" id="rsvpDiet" placeholder="None, Vegetarian, Allergies, etc.">
+                        </div>
+                        <div class="mb-4">
+                            <label for="rsvpMessage" class="form-label font-mono text-light">MESSAGE TO COUPLE</label>
+                            <textarea class="form-control cyber-input" id="rsvpMessage" rows="3" placeholder="Share your warm wishes..."></textarea>
+                        </div>
+                        <button type="submit" id="rsvpSubmitBtn" class="btn-cyber-submit w-100 py-3">STAMP BOARDING MANIFEST</button>
+                    </form>
+
+                    <div id="rsvpSuccessAlert" class="alert alert-success mt-4 d-none text-center" role="alert">
+                        <h4 class="font-serif">Manifest Confirmed</h4>
+                        <p class="mb-0 small">Your response has been saved. We look forward to seeing you on board!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer-cyber py-5 text-center">
+            <div class="container py-3">
+                <div class="footer-code mb-2">EVELYN &amp; JULIAN • 2026</div>
+                <p class="small text-light opacity-75 font-mono mb-0">ANTIPOLO, RIZAL • ALL RIGHTS RESERVED</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <script src="app.js"></script>
+</body>
+</html>
